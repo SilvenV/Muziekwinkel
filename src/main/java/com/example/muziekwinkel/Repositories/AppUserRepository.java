@@ -1,14 +1,14 @@
 package com.example.muziekwinkel.Repositories;
 
-import com.example.muziekwinkel.Models.User;
+import com.example.muziekwinkel.Models.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface AppUserRepository extends JpaRepository<AppUser, Long> {
 
-    @Query("SELECT s FROM User s WHERE s.username=?1")
+    @Query("SELECT s FROM AppUser s WHERE s.username=?1")
     UserDetails findByName(String username);
 }
