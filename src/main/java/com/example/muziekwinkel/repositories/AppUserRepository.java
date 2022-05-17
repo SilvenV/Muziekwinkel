@@ -1,6 +1,6 @@
-package com.example.muziekwinkel.Repositories;
+package com.example.muziekwinkel.repositories;
 
-import com.example.muziekwinkel.Models.AppUser;
+import com.example.muziekwinkel.models.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.userdetails.UserDetails;

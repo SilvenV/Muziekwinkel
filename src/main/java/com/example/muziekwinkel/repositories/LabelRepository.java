@@ -1,7 +1,6 @@
-package com.example.muziekwinkel.Repositories;
+package com.example.muziekwinkel.repositories;
 
-import com.example.muziekwinkel.Models.Artist;
-import com.example.muziekwinkel.Models.Label;
+import com.example.muziekwinkel.models.Label;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

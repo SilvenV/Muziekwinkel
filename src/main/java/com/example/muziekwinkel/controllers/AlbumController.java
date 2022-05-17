@@ -1,7 +1,7 @@
-package com.example.muziekwinkel.Controllers;
+package com.example.muziekwinkel.controllers;
 
-import com.example.muziekwinkel.Models.Album;
-import com.example.muziekwinkel.Services.AlbumService;
+import com.example.muziekwinkel.models.Album;
+import com.example.muziekwinkel.services.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,17 +18,22 @@ public class AlbumController {
         this.albumService = albumService;
     }
 
-    @PostMapping(path = "add")
-    public void addNewLP(@RequestBody Album album) {
-        albumService.addNewAlbum(album);
-    }
-
     @GetMapping(path = "showall")
-    public List<Album> getLPs() {
+    public List<Album> getAlbums() {
         return albumService.getAlbums();
     }
 
-    @PutMapping(path="changealbumname")
+    @PostMapping(path = "admin/newalbum")
+    public void addNewAlbum(@RequestParam String albumName, String artistName, String labelName) {
+         albumService.addNewAlbum(albumName, artistName, labelName);
+    }
+
+    @DeleteMapping(path = "admin/deletealbum")
+    public void deleteAlbum(@RequestParam Long albumId){
+        albumService.deleteAlbum(albumId);
+    }
+
+    @PutMapping(path="admin/changealbumname")
     public Album changeAlbumName(@RequestParam Long albumId, String newName){
         return albumService.changeAlbumName(albumId, newName);
     }

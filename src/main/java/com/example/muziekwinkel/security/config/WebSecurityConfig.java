@@ -42,18 +42,17 @@
 //    }
 //}
 
-package com.example.muziekwinkel.Security.Config;
+package com.example.muziekwinkel.security.config;
 
-import com.example.muziekwinkel.Services.UserService;
+import com.example.muziekwinkel.AppUserRole;
+import com.example.muziekwinkel.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configurers.userdetails.DaoAuthenticationConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -71,8 +70,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/v*/registration/**")
-                .permitAll()
+                .antMatchers("/api/v*/*/admin/**").hasAuthority(AppUserRole.ADMIN.name())
+                .antMatchers("/api/v*/**").hasAnyAuthority(AppUserRole.ADMIN.name(), AppUserRole.USER.name())
                 .anyRequest()
                 .authenticated()
                 .and()

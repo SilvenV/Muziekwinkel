@@ -1,9 +1,9 @@
-package com.example.muziekwinkel.Services;
+package com.example.muziekwinkel.services;
 
-import com.example.muziekwinkel.Models.Artist;
-import com.example.muziekwinkel.Models.Label;
-import com.example.muziekwinkel.Repositories.ArtistRepository;
-import com.example.muziekwinkel.Repositories.LabelRepository;
+import com.example.muziekwinkel.models.Artist;
+import com.example.muziekwinkel.models.Label;
+import com.example.muziekwinkel.repositories.ArtistRepository;
+import com.example.muziekwinkel.repositories.LabelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -98,5 +98,13 @@ public class LabelService {
 
     public void deleteLabel(Long labelId) {
         labelRepository.deleteById((labelId));
+    }
+
+    public void editLabelName(Long labelId, String newLabelName) {
+        if (labelRepository.findById(labelId).isPresent()) {
+            Label label = labelRepository.findById(labelId).get();
+            label.setName(newLabelName);
+            labelRepository.save(label);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.muziekwinkel.Models;
+package com.example.muziekwinkel.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -8,8 +8,6 @@ import java.util.List;
 
 @Entity
 @Table
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -53,8 +51,7 @@ public class Artist {
         this.name = name;
         this.yearFounded = yearFounded;
     }
-
-    public void addAlbum(Album newAlbum) {
-
+    public void addAlbum(Album album){
+        releasedAlbums.add(album);
     }
 }

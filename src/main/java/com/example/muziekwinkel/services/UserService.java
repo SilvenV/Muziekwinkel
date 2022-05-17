@@ -1,6 +1,6 @@
-package com.example.muziekwinkel.Services;
+package com.example.muziekwinkel.services;
 
-import com.example.muziekwinkel.Repositories.AppUserRepository;
+import com.example.muziekwinkel.repositories.AppUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
 
-    private final AppUserRepository userRepository;
+    private final AppUserRepository appUserRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByName(username);
+        return appUserRepository.findByName(username);
     }
 }

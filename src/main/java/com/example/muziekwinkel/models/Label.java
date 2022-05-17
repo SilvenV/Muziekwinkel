@@ -1,4 +1,4 @@
-package com.example.muziekwinkel.Models;
+package com.example.muziekwinkel.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

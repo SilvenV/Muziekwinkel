@@ -1,4 +1,4 @@
-package com.example.muziekwinkel.Models;
+package com.example.muziekwinkel.models;
 
 import com.example.muziekwinkel.AppUserRole;
 import lombok.EqualsAndHashCode;
@@ -34,17 +34,15 @@ public class AppUser implements UserDetails {
     private Long id;
     private String name;
     private String username;
-    private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     public AppUserRole appUserRole;
     private Boolean locked;
     private Boolean enabled;
 
-    public AppUser(String name, String username, String email, String password, AppUserRole appUserRole, Boolean locked, Boolean enabled) {
+    public AppUser(String name, String username, String password, AppUserRole appUserRole, Boolean locked, Boolean enabled) {
         this.name = name;
         this.username = username;
-        this.email = email;
         this.password = password;
         this.appUserRole = appUserRole;
         this.locked = locked;
@@ -87,3 +85,5 @@ public class AppUser implements UserDetails {
         return enabled;
     }
 }
+
+//TODO cleanup, remove useless fields
