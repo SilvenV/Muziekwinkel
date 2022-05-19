@@ -28,18 +28,12 @@ public class AlbumService {
         return albumRepository.findAll();
     }
 
-    public void addNewAlbum(String newAlbumName, String artistName, String labelName) {
+    public void addNewAlbum(String newAlbumName, String artistName) {
         if (artistRepository.findArtistByName(artistName) != null) {
-            System.out.println("test 1");
             Artist artist = artistRepository.findArtistByName(artistName);
-            if (labelRepository.findLabelByName(labelName) != null) {
-                System.out.println("test 2");
-                Label label = labelRepository.findLabelByName(labelName);
-                if (albumRepository.findAlbumByName(newAlbumName) == null) {
-                    System.out.println("test 3");
-                    Album album = new Album(newAlbumName, artist, label);
-                    albumRepository.save(album);
-                }
+            if (albumRepository.findAlbumByName(newAlbumName) == null) {
+                Album album = new Album(newAlbumName, artist);
+                albumRepository.save(album);
             }
         }
     }

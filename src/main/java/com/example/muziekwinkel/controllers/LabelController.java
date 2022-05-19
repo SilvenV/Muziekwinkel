@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="api/v3/labels")
+@RequestMapping(path = "api/v3/labels")
 public class LabelController {
     private final LabelService labelService;
 
@@ -17,22 +17,33 @@ public class LabelController {
         this.labelService = labelService;
     }
 
-    @GetMapping(path="showall")
-    public List<Label> getLabels(){
+    @GetMapping(path = "showall")
+    public List<Label> getLabels() {
         return labelService.getLabels();
     }
 
-    @PostMapping(path="admin/newlabel")
-    public void newLabel(@RequestBody Label label){
+    @PostMapping(path = "admin/newlabel")
+    public void newLabel(@RequestBody Label label) {
         labelService.addNewLabel(label);
     }
-    @DeleteMapping(path="admin/deletelabel")
-    public void deleteLabel(@RequestParam Long labelId){
+
+    @DeleteMapping(path = "admin/deletelabel")
+    public void deleteLabel(@RequestParam Long labelId) {
         labelService.deleteLabel(labelId);
     }
 
-    @PutMapping(path="admin/editlabelname")
-    public void editLabelName(@RequestParam Long labelId, String newLabelName){
+    @PutMapping(path = "admin/editlabelname")
+    public void editLabelName(@RequestParam Long labelId, String newLabelName) {
         labelService.editLabelName(labelId, newLabelName);
+    }
+
+    @PutMapping(path = "admin/signartist")
+    public void signArtistToLabel(@RequestParam Long labelId, String artistName) {
+        labelService.signArtistToLabel(labelId, artistName);
+    }
+
+    @PutMapping(path = "admin/removeartist")
+    public void removeArtistFromLabel(@RequestParam Long labelId, String artistName) {
+        labelService.removeArtistFromLabel(labelId, artistName);
     }
 }

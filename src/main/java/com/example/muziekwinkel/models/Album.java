@@ -25,10 +25,10 @@ public class Album {
     )
     Long albumId;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "artistId")
     Artist artist;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "labelId")
     Label label;
 
@@ -36,10 +36,12 @@ public class Album {
     String name;
     @Column
     String artistName;
+    @Column
+    String labelName;
 
-    public Album(String name, Artist artist, Label label) {
+    public Album(String name, Artist artist) {
         this.artist = artist;
-        this.label = label;
+        this.label = artist.getCurrentLabel();
         this.name = name;
     }
 
@@ -60,7 +62,14 @@ public class Album {
     }
 
     public String getArtistName() {
-        return artistName;
+        return artist.getName();
+    }
+
+    public String getLabelName() {
+        if (label != null)
+            return label.getName();
+        else
+            return "Independent";
     }
 
     public void setArtist(Artist artist) {

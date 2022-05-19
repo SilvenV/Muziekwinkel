@@ -33,13 +33,14 @@ public class Artist {
     @JoinColumn(name = "labelId")
     Label currentLabel;
     @Column
+    String currentLabelName;
+    @Column
     @OneToMany(mappedBy = "artist")
     List<Album> releasedAlbums;
 
     public void setCurrentLabel(Label newLabel) {
         if (currentLabel != null) {
             if (currentLabel != newLabel) {
-                currentLabel.removeArtist(this);
                 this.currentLabel = newLabel;
             }
         } else {
@@ -47,11 +48,19 @@ public class Artist {
         }
     }
 
+    public String getCurrentLabelName() {
+        if (currentLabel != null)
+            return currentLabel.getName();
+        else
+            return "Independent";
+    }
+
     public Artist(String name, int yearFounded) {
         this.name = name;
         this.yearFounded = yearFounded;
     }
-    public void addAlbum(Album album){
+
+    public void addAlbum(Album album) {
         releasedAlbums.add(album);
     }
 }

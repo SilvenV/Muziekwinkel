@@ -67,10 +67,4 @@ public class Label {
                 ", releasedAlbums=" + releasedAlbums +
                 '}';
     }
-
-    public void removeArtist(Artist artistToRemove) {
-        if (currentArtists.contains(artistToRemove)) {
-            currentArtists.remove(artistToRemove);
-        }
-    }
 }

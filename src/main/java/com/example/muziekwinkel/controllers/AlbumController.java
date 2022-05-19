@@ -25,16 +25,16 @@ public class AlbumController {
 
     @PostMapping(path = "admin/newalbum")
     public void addNewAlbum(@RequestParam String albumName, String artistName, String labelName) {
-         albumService.addNewAlbum(albumName, artistName, labelName);
+        albumService.addNewAlbum(albumName, artistName);
     }
 
     @DeleteMapping(path = "admin/deletealbum")
-    public void deleteAlbum(@RequestParam Long albumId){
+    public void deleteAlbum(@RequestParam Long albumId) {
         albumService.deleteAlbum(albumId);
     }
 
-    @PutMapping(path="admin/changealbumname")
-    public Album changeAlbumName(@RequestParam Long albumId, String newName){
+    @PutMapping(path = "admin/changealbumname")
+    public Album changeAlbumName(@RequestParam Long albumId, String newName) {
         return albumService.changeAlbumName(albumId, newName);
     }
 }

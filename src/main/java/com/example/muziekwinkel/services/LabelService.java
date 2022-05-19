@@ -31,25 +31,9 @@ public class LabelService {
         }
     }
 
-    public void removeLabel(Long labelId) {
-        labelRepository.deleteById(labelId);
-    }
-
-    public void addArtistToLabel(Artist artist, Label label) {
-        if (labelRepository.findById((long) label.getLabelId()).isPresent()) {
-            if (label.getCurrentArtists().contains(artist)) {
-                System.out.println("Artist is already signed.");
-            } else {
-                label.addArtist(artist);
-            }
-        } else {
-            System.out.println("Label not found.");
-        }
-    }
-
     //If artist and label exist, see if artist is already signed with label. If not, sign artist.
-    public void signArtistToLabel(String artistName, String labelName) {
-        if (!checkLabelExists(labelName)) {
+    public void signArtistToLabel(Long labelId, String artistName) {
+        if (!checkLabelExists(labelId)) {
             System.out.println("Label not found.");
             return;
         }
@@ -57,7 +41,7 @@ public class LabelService {
             System.out.println("Artist not found.");
             return;
         }
-        Label label = labelRepository.findLabelByName(labelName);
+        Label label = labelRepository.findById(labelId).get();
         Artist artist = artistRepository.findArtistByName(artistName);
         if (!label.getCurrentArtists().contains(artist)) {
             label.addArtist(artist);
@@ -68,8 +52,9 @@ public class LabelService {
     }
 
     //If artist and label exist, and label signed artist, remove artist from list.
-    public void removeArtistFromLabel(String artistName, String labelName) {
-        if (!checkLabelExists(labelName)) {
+    //
+    public void removeArtistFromLabel(Long labelId, String artistName) {
+        if (!checkLabelExists(labelId)) {
             System.out.println("Label not found.");
             return;
         }
@@ -77,10 +62,13 @@ public class LabelService {
             System.out.println("Artist not found.");
             return;
         }
-        Label label = labelRepository.findLabelByName(labelName);
+        Label label = labelRepository.findById(labelId).get();
         Artist artist = artistRepository.findArtistByName(artistName);
-        if (label.getCurrentArtists().contains(artist)) {
-            label.removeArtist(artist);
+        if (label.getCurrentArtists().contains(artistRepository.findArtistByName(artistName))) {
+            artist.setCurrentLabel(null);
+            labelRepository.save(label);
+            artistRepository.save(artist);
+            System.out.println(artist.getCurrentLabelName());
         } else {
             System.out.println("Artist not signed.");
         }
@@ -92,8 +80,8 @@ public class LabelService {
     }
 
     //Reusable method to check whether label exists.
-    public boolean checkLabelExists(String labelName) {
-        return labelRepository.findLabelByName(labelName) != null;
+    public boolean checkLabelExists(Long labelId) {
+        return labelRepository.existsById(labelId);
     }
 
     public void deleteLabel(Long labelId) {

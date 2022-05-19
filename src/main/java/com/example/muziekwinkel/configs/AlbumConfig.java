@@ -21,10 +21,10 @@ public class AlbumConfig {
     @Bean
     CommandLineRunner albumCommandLineRunner(AlbumRepository albumRepository) {
         return args -> {
-            Album symphony9 = new Album();
-            symphony9.setArtist(artistRepository.findArtistByName("Beethoven"));
-            albumRepository.save(symphony9);
+//            Album symphony9 = new Album();
+//            symphony9.setArtist(artistRepository.findArtistByName("Beethoven"));
+//            albumRepository.save(symphony9);
         };
     }
 }
-//TODO Album initialisation doesn't register artist and label
+//TODO Album initialisation doesn't register artist and label - FLYWAY/LIQUIBASE
