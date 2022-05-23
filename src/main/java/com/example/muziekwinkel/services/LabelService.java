@@ -94,4 +94,11 @@ public class LabelService {
             labelRepository.save(label);
         }
     }
+
+    public Label getLabel(String labelName) {
+        if(labelRepository.findLabelByName(labelName)!=null){
+            return labelRepository.findLabelByName(labelName);
+        }
+        return null;
+    }
 }

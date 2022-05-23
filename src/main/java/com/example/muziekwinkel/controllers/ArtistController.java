@@ -21,6 +21,10 @@ public class ArtistController {
     public List<Artist> getArtists() {
         return artistService.getArtists();
     }
+    @GetMapping(path="showartist")
+    public Artist getArtist(@RequestParam String artistName){
+        return artistService.getArtist(artistName);
+    }
 
     @PostMapping(path = "admin/newartist")
     public void newArtist(@RequestBody Artist artist) {

@@ -58,4 +58,11 @@ public class ArtistService {
             }
         }
     }
+
+    public Artist getArtist(String artistName) {
+        if(artistRepository.findArtistByName(artistName)!=null){
+            return artistRepository.findArtistByName(artistName);
+        }
+        return null;
+    }
 }

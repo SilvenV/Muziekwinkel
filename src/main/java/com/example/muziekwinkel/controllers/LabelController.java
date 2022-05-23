@@ -21,6 +21,10 @@ public class LabelController {
     public List<Label> getLabels() {
         return labelService.getLabels();
     }
+    @GetMapping(path="showlabel")
+    public Label getLabel(@RequestParam String labelName){
+        return labelService.getLabel(labelName);
+    }
 
     @PostMapping(path = "admin/newlabel")
     public void newLabel(@RequestBody Label label) {
