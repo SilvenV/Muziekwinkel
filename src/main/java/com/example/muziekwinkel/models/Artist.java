@@ -28,7 +28,7 @@ public class Artist {
     String name;
     @Column
     int yearFounded;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JsonIgnore
     @JoinColumn(name = "labelId")
     Label currentLabel;
@@ -37,16 +37,6 @@ public class Artist {
     @Column
     @OneToMany(mappedBy = "artist")
     List<Album> releasedAlbums;
-
-    public void setCurrentLabel(Label newLabel) {
-        if (currentLabel != null) {
-            if (currentLabel != newLabel) {
-                this.currentLabel = newLabel;
-            }
-        } else {
-            this.currentLabel = newLabel;
-        }
-    }
 
     public String getCurrentLabelName() {
         if (currentLabel != null)

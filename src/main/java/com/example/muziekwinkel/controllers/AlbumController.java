@@ -24,7 +24,7 @@ public class AlbumController {
     }
 
     @PostMapping(path = "admin/newalbum")
-    public void addNewAlbum(@RequestParam String albumName, String artistName, String labelName) {
+    public void addNewAlbum(@RequestParam String albumName, String artistName) {
         albumService.addNewAlbum(albumName, artistName);
     }
 

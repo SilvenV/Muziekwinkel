@@ -46,26 +46,13 @@ public class ArtistService {
         }
     }
 
-    public void editArtistLabel(Long artistId, String newLabelName) {
-        if (artistRepository.existsById(artistId)) {
-            Artist artist = artistRepository.findById(artistId).get();
-            if (labelRepository.findLabelByName(newLabelName) != null) {
-                Label label = labelRepository.findLabelByName(newLabelName);
-                artist.setCurrentLabel(label);
-            } else {
-                artist.setCurrentLabel(null);
-            }
-            artistRepository.save(artist);
-        }
-    }
-
     //Checks if artist and album exist, then whether artist has already registered album. If not, add album to artist.
     public void editArtistAlbum(Long artistId, String albumName) {
         if (artistRepository.existsById(artistId)) {
             Artist artist = artistRepository.findById(artistId).get();
             if (albumRepository.findAlbumByName(albumName) != null) {
                 Album album = albumRepository.findAlbumByName(albumName);
-                if(!artist.getReleasedAlbums().contains(album)){
+                if (!artist.getReleasedAlbums().contains(album)) {
                     artist.addAlbum(album);
                 }
             }

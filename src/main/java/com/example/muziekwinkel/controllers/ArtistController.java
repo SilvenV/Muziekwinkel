@@ -37,11 +37,6 @@ public class ArtistController {
         artistService.editArtistName(artistId, newName);
     }
 
-    @PutMapping(path = "admin/editartistlabel")
-    public void editArtistLabel(@RequestParam Long artistId, String newLabelName) {
-        artistService.editArtistLabel(artistId, newLabelName);
-    }
-
     @PutMapping(path="admin/editartistalbum")
     public void editArtistAlbum(@RequestParam Long artistId, String albumName){
         artistService.editArtistAlbum(artistId, albumName);

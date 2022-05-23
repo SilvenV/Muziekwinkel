@@ -21,7 +21,6 @@ public class LabelService {
     }
 
     public List<Label> getLabels() {
-        System.out.println("test");
         return labelRepository.findAll();
     }
 
