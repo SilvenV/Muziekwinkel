@@ -11,7 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Artist {
     @Id
     @SequenceGenerator(
@@ -28,7 +27,7 @@ public class Artist {
     String name;
     @Column
     int yearFounded;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JsonIgnore
     @JoinColumn(name = "labelId")
     Label currentLabel;

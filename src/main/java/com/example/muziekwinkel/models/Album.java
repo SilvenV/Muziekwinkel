@@ -25,10 +25,10 @@ public class Album {
     )
     Long albumId;
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "artistId")
     Artist artist;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "labelId")
     Label label;
 
@@ -41,7 +41,8 @@ public class Album {
 
     public Album(String name, Artist artist) {
         this.artist = artist;
-        this.label = artist.getCurrentLabel();
+        if(artist.getCurrentLabel()!=null)
+            this.label = artist.getCurrentLabel();
         this.name = name;
     }
 
@@ -61,9 +62,6 @@ public class Album {
         this.name = name;
     }
 
-    public String getArtistName() {
-        return artist.getName();
-    }
 
     public String getLabelName() {
         if (label != null)
@@ -76,12 +74,12 @@ public class Album {
         this.artist = artist;
     }
 
-    @Override
-    public String toString() {
-        return "Album{" +
-                "artist=" + artist.getName() +
-                ", name='" + name + '\'' +
-                ", label=" + label.getName() +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Album{" +
+//                "artist=" + artist.getName() +
+//                ", name='" + name + '\'' +
+//                ", label=" + label.getName() +
+//                '}';
+//    }
 }

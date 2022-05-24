@@ -10,5 +10,3 @@ public class MuziekwinkelApplication {
         SpringApplication.run(MuziekwinkelApplication.class, args);
     }
 }
-
-//TODO Clean up getters and setters in models

@@ -51,7 +51,6 @@ public class LabelService {
     }
 
     //If artist and label exist, and label signed artist, remove artist from list.
-    //
     public void removeArtistFromLabel(Long labelId, String artistName) {
         if (!checkLabelExists(labelId)) {
             System.out.println("Label not found.");

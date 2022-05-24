@@ -85,5 +85,3 @@ public class AppUser implements UserDetails {
         return enabled;
     }
 }
-
-//TODO cleanup, remove useless fields
