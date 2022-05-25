@@ -21,8 +21,9 @@ public class ArtistController {
     public List<Artist> getArtists() {
         return artistService.getArtists();
     }
-    @GetMapping(path="showartist")
-    public Artist getArtist(@RequestParam String artistName){
+
+    @GetMapping(path = "showartist")
+    public Artist getArtist(@RequestParam String artistName) {
         return artistService.getArtist(artistName);
     }
 
@@ -39,10 +40,5 @@ public class ArtistController {
     @PutMapping(path = "admin/editartistname")
     public void editArtistName(@RequestParam Long artistId, String newName) {
         artistService.editArtistName(artistId, newName);
-    }
-
-    @PutMapping(path="admin/editartistalbum")
-    public void editArtistAlbum(@RequestParam Long artistId, String albumName){
-        artistService.editArtistAlbum(artistId, albumName);
     }
 }

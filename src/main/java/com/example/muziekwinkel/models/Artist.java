@@ -48,8 +48,4 @@ public class Artist {
         this.name = name;
         this.yearFounded = yearFounded;
     }
-
-    public void addAlbum(Album album) {
-        releasedAlbums.add(album);
-    }
 }

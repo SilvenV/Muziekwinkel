@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "6e7a5caf-a498-4d41-88a2-3cf7d91e61a7",
+		"_postman_id": "8628b377-2e6e-46b4-bc91-a5a087c25cb9",
 		"name": "Muziekwinkel",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15502751"
 	},
 	"item": [
 		{
@@ -56,7 +57,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/v3/lps/showall",
+							"raw": "localhost:8080/api/v3/labels/showall",
 							"host": [
 								"localhost"
 							],
@@ -64,7 +65,7 @@
 							"path": [
 								"api",
 								"v3",
-								"lps",
+								"labels",
 								"showall"
 							]
 						}
@@ -74,8 +75,84 @@
 				{
 					"name": "Show Artist",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass2",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "AppUser",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v3/artists/showartist?artistName=Beethoven",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v3",
+								"artists",
+								"showartist"
+							],
+							"query": [
+								{
+									"key": "artistName",
+									"value": "Beethoven"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Label",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "AppAdmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v3/labels/showlabel?labelName=test",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v3",
+								"labels",
+								"showlabel"
+							],
+							"query": [
+								{
+									"key": "labelName",
+									"value": "test"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -87,24 +164,139 @@
 				{
 					"name": "Add Album",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "AppAdmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v3/albums/admin/newalbum?albumName=TestAlbum&artistName=Beethoven",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v3",
+								"albums",
+								"admin",
+								"newalbum"
+							],
+							"query": [
+								{
+									"key": "albumName",
+									"value": "TestAlbum"
+								},
+								{
+									"key": "artistName",
+									"value": "Beethoven"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Add Artist",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "AppAdmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\":\"Artiest\",\r\n\t\"yearFounded\":2022\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v3/artists/admin/newartist",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v3",
+								"artists",
+								"admin",
+								"newartist"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Add Label",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "AppAdmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\": \"Columbia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v3/labels/admin/newlabel",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v3",
+								"labels",
+								"admin",
+								"newlabel"
+							]
+						}
 					},
 					"response": []
 				}
@@ -116,24 +308,129 @@
 				{
 					"name": "Delete Album",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "AppAdmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v3/albums/admin/deletealbum?albumId=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v3",
+								"albums",
+								"admin",
+								"deletealbum"
+							],
+							"query": [
+								{
+									"key": "albumId",
+									"value": "2"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Delete Artist",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "AppAdmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v3/artists/admin/deleteartist?artistId=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v3",
+								"artists",
+								"admin",
+								"deleteartist"
+							],
+							"query": [
+								{
+									"key": "artistId",
+									"value": "2"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Delete Label",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "AppAdmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v3/labels/admin/deletelabel?labelId=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v3",
+								"labels",
+								"admin",
+								"deletelabel"
+							],
+							"query": [
+								{
+									"key": "labelId",
+									"value": "2"
+								}
+							]
+						}
 					},
 					"response": []
 				}
@@ -145,32 +442,235 @@
 				{
 					"name": "Edit Label Name",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "AppAdmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v3/labels/admin/editlabelname?labelId=3&newLabelName=Columbia Records",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v3",
+								"labels",
+								"admin",
+								"editlabelname"
+							],
+							"query": [
+								{
+									"key": "labelId",
+									"value": "3"
+								},
+								{
+									"key": "newLabelName",
+									"value": "Columbia Records"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Edit Artist Name",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "AppAdmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v3/artists/admin/editartistname?artistId=2&newName=TEST",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v3",
+								"artists",
+								"admin",
+								"editartistname"
+							],
+							"query": [
+								{
+									"key": "artistId",
+									"value": "2"
+								},
+								{
+									"key": "newName",
+									"value": "TEST"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Sign Artist To Label",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "AppAdmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v3/labels/admin/signartist?labelId=1&artistName=Beethoven",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v3",
+								"labels",
+								"admin",
+								"signartist"
+							],
+							"query": [
+								{
+									"key": "labelId",
+									"value": "1"
+								},
+								{
+									"key": "artistName",
+									"value": "Beethoven"
+								}
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Remove Artist From Label",
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "AppAdmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v3/labels/admin/removeartist?labelId=1&artistName=Beethoven",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v3",
+								"labels",
+								"admin",
+								"removeartist"
+							],
+							"query": [
+								{
+									"key": "labelId",
+									"value": "1"
+								},
+								{
+									"key": "artistName",
+									"value": "Beethoven"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Album Name",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pass",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "AppAdmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v3/albums/admin/changealbumname?albumId=1&newName=Symphony No. 9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v3",
+								"albums",
+								"admin",
+								"changealbumname"
+							],
+							"query": [
+								{
+									"key": "albumId",
+									"value": "1"
+								},
+								{
+									"key": "newName",
+									"value": "Symphony No. 9"
+								}
+							]
+						}
 					},
 					"response": []
 				}

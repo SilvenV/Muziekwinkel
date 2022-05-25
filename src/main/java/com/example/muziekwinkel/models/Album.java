@@ -41,7 +41,7 @@ public class Album {
 
     public Album(String name, Artist artist) {
         this.artist = artist;
-        if(artist.getCurrentLabel()!=null)
+        if (artist.getCurrentLabel() != null)
             this.label = artist.getCurrentLabel();
         this.name = name;
     }
@@ -73,13 +73,4 @@ public class Album {
     public void setArtist(Artist artist) {
         this.artist = artist;
     }
-
-//    @Override
-//    public String toString() {
-//        return "Album{" +
-//                "artist=" + artist.getName() +
-//                ", name='" + name + '\'' +
-//                ", label=" + label.getName() +
-//                '}';
-//    }
 }

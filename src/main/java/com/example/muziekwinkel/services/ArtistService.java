@@ -46,21 +46,8 @@ public class ArtistService {
         }
     }
 
-    //Checks if artist and album exist, then whether artist has already registered album. If not, add album to artist.
-    public void editArtistAlbum(Long artistId, String albumName) {
-        if (artistRepository.existsById(artistId)) {
-            Artist artist = artistRepository.findById(artistId).get();
-            if (albumRepository.findAlbumByName(albumName) != null) {
-                Album album = albumRepository.findAlbumByName(albumName);
-                if (!artist.getReleasedAlbums().contains(album)) {
-                    artist.addAlbum(album);
-                }
-            }
-        }
-    }
-
     public Artist getArtist(String artistName) {
-        if(artistRepository.findArtistByName(artistName)!=null){
+        if (artistRepository.findArtistByName(artistName) != null) {
             return artistRepository.findArtistByName(artistName);
         }
         return null;
