@@ -56,7 +56,8 @@ public class Label {
     public List<Artist> getCurrentArtists() {
         return currentArtists;
     }
-    public void addArtist(Artist artist){
+
+    public void addArtist(Artist artist) {
         currentArtists.add(artist);
     }
 

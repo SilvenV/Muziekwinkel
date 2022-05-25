@@ -95,7 +95,7 @@ public class LabelService {
     }
 
     public Label getLabel(String labelName) {
-        if(labelRepository.findLabelByName(labelName)!=null){
+        if (labelRepository.findLabelByName(labelName) != null) {
             return labelRepository.findLabelByName(labelName);
         }
         return null;
